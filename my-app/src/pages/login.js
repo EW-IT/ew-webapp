@@ -11,18 +11,15 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 const theme = createTheme();
 
 export default function SignInSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const handleSubmit = async (event) => {
+    console.log("First");
+    const response = await axios.post('http://127.0.0.1:9000/test/login', {username: 'test',password:'pass'});
+    console.log(response.data);
   };
 
   return (
@@ -89,13 +86,21 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                onClick={(e) => {e.preventDefault(); window.location.href='/Home';}}
+                
               >
                 Sign In
               </Button>
+
               
             </Box>
           </Box>
+          <Button
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={handleSubmit}>
+          
+          </Button>
         </Grid>
       </Grid>
     </ThemeProvider>
