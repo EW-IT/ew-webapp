@@ -17,7 +17,7 @@ const theme = createTheme();
 
 export default function SignInSide() {
   const handleSubmit = async (event) => {
-    console.log("First");
+    event.preventDefault();
     const response = await axios.post('http://127.0.0.1:9000/test/login', {username: 'test',password:'pass'});
     console.log(response.data);
   };
@@ -94,13 +94,6 @@ export default function SignInSide() {
               
             </Box>
           </Box>
-          <Button
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                onClick={handleSubmit}>
-          
-          </Button>
         </Grid>
       </Grid>
     </ThemeProvider>
