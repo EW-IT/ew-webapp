@@ -1,38 +1,33 @@
 import { AutoAwesome } from '@mui/icons-material';
-import React from 'react';
 import Navbar from '../components/Navbar';
+import React, { useState } from 'react';
+import { autocompleteClasses } from '@mui/material';
 
 
 const Submit_csv = () => {
+
+    // handle file upload
+    const handleFileUpload = e => {
+   
+    }
     return (
         <>
         <Navbar />
-    <div  style={{
-          display: "flex",
-          justifyContent: "center"}}>
-        <h3>This page is for JCRC Members to submit csv files</h3>
-    </div>
-    <div  style={{
-          display: "flex",
-          justifyContent: "center"
-          }}>
-                <button className="stylised_button" style = {{
-                    marginRight: 10
-                }}>
-                    Browse Files
-                </button>
-                <button className="stylised_button" style = {{
-                    marginLeft: 10
-                }}>
-                    Submit CSV
-                </button>
-    </div>
+        <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+          <h3>This page is for JCRC members to upload their CSV files</h3>
+          <input
+            type="file"
+            accept=".csv,.xlsx,.xls"
+            onChange={handleFileUpload}>
+                
+        </input>
+        
+        </div>
+        </>
+      );
+    }
     
-    
-    
-    </>
-    );
-}
+
 export default Submit_csv;
 
 //Submit_csv.js
